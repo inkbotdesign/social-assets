@@ -4,12 +4,15 @@ name: Render carousels
 # instagram/<slug>/. Runs on pushes to main that add or change a spec, or by
 # hand (Actions > Render carousels > Run workflow) for one slug or all specs.
 # The autopilot only pushes specs; this workflow is the only thing that runs
-# the renderer.
+# the renderer. On pull requests it renders as a check (changed specs, or
+# win-loss-analysis as a smoke test) and uploads the PNGs without committing.
 
 on:
   push:
     branches: [main]
     paths: ['specs/**.json']
+  pull_request:
+    paths: ['specs/**.json', 'carousel/**', '.github/workflows/render-carousels.yml']
   workflow_dispatch:
     inputs:
       slug:
@@ -20,7 +23,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: render-carousels
+  group: render-carousels-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
   cancel-in-progress: false
 
 jobs:
@@ -38,6 +41,7 @@ jobs:
           EVENT: ${{ github.event_name }}
           BEFORE: ${{ github.event.before }}
           SLUG: ${{ inputs.slug }}
+          BASE_REF: ${{ github.base_ref }}
         run: |
           if [ "$EVENT" = "workflow_dispatch" ]; then
             if [ "$SLUG" = "all" ]; then
@@ -46,6 +50,9 @@ jobs:
               files="specs/${SLUG}.json"
               [ -f "$files" ] || { echo "::error::No spec at $files"; exit 1; }
             fi
+          elif [ "$EVENT" = "pull_request" ]; then
+            files=$(git diff --name-only --diff-filter=AM "origin/$BASE_REF...HEAD" -- 'specs/*.json')
+            [ -n "$files" ] || files="specs/win-loss-analysis.json"
           elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             files=$(git diff-tree --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'specs/*.json')
           else
@@ -95,8 +102,15 @@ jobs:
             echo "$slug: $n slides, all 1080 x 1440"
           done
 
+      - name: Upload slides (pull requests)
+        if: github.event_name == 'pull_request' && steps.specs.outputs.files != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-slides
+          path: instagram/
+
       - name: Commit rendered slides
-        if: steps.specs.outputs.files != ''
+        if: github.event_name != 'pull_request' && steps.specs.outputs.files != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
