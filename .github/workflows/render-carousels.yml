@@ -1,0 +1,124 @@
+name: Render carousels
+
+# Renders Instagram carousel PNGs from specs/<slug>.json and commits them to
+# instagram/<slug>/. Runs on pushes to main that add or change a spec, or by
+# hand (Actions > Render carousels > Run workflow) for one slug or all specs.
+# The autopilot only pushes specs; this workflow is the only thing that runs
+# the renderer. On pull requests it renders as a check (changed specs, or
+# win-loss-analysis as a smoke test) and uploads the PNGs without committing.
+
+on:
+  push:
+    branches: [main]
+    paths: ['specs/**.json']
+  pull_request:
+    paths: ['specs/**.json', 'carousel/**', '.github/workflows/render-carousels.yml']
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Spec slug to render (e.g. win-loss-analysis), or "all"'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-carousels-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Work out which specs to render
+        id: specs
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          SLUG: ${{ inputs.slug }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            if [ "$SLUG" = "all" ]; then
+              files=$(ls specs/*.json)
+            else
+              files="specs/${SLUG}.json"
+              [ -f "$files" ] || { echo "::error::No spec at $files"; exit 1; }
+            fi
+          elif [ "$EVENT" = "pull_request" ]; then
+            files=$(git diff --name-only --diff-filter=AM "origin/$BASE_REF...HEAD" -- 'specs/*.json')
+            [ -n "$files" ] || files="specs/win-loss-analysis.json"
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            files=$(git diff-tree --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'specs/*.json')
+          else
+            files=$(git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- 'specs/*.json')
+          fi
+          echo "Specs to render:"; echo "$files"
+          { echo 'files<<EOF'; echo "$files"; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.specs.outputs.files != ''
+        with:
+          node-version: 22
+
+      - name: Install Inter, Playwright and Chromium
+        if: steps.specs.outputs.files != ''
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q fonts-inter
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Render
+        if: steps.specs.outputs.files != ''
+        env:
+          FILES: ${{ steps.specs.outputs.files }}
+        run: |
+          fail=0
+          for f in $FILES; do
+            echo "::group::$f"
+            node carousel/render.mjs "$f" || { echo "::error file=$f::Render failed for $f"; fail=1; }
+            echo "::endgroup::"
+          done
+          exit $fail
+
+      - name: Check slide sizes
+        if: steps.specs.outputs.files != ''
+        env:
+          FILES: ${{ steps.specs.outputs.files }}
+        run: |
+          for f in $FILES; do
+            slug=$(node -p "require('./$f').slug")
+            n=$(node -p "require('./$f').slides.length")
+            for i in $(seq 1 "$n"); do
+              p="instagram/$slug/slide-$i.png"
+              file "$p" | grep -q '1080 x 1440' || { echo "::error::$p is missing or not 1080 x 1440"; exit 1; }
+            done
+            echo "$slug: $n slides, all 1080 x 1440"
+          done
+
+      - name: Upload slides (pull requests)
+        if: github.event_name == 'pull_request' && steps.specs.outputs.files != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-slides
+          path: instagram/
+
+      - name: Commit rendered slides
+        if: github.event_name != 'pull_request' && steps.specs.outputs.files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add instagram
+          if git diff --cached --quiet; then echo "No image changes."; exit 0; fi
+          git commit -m "Render carousels for ${GITHUB_SHA::7}"
+          for attempt in 1 2 3; do
+            git pull --rebase -q origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push rendered slides"; exit 1

@@ -9,12 +9,15 @@ This repo stores Inkbot Design's Instagram carousel images and the template that
 ```bash
 git clone --depth 1 https://github.com/inkbotdesign/social-assets
 cd social-assets
-# write specs/<slug>.json (see below), then:
-node carousel/render.mjs specs/<slug>.json      # writes instagram/<slug>/slide-1.png ...
-git add specs instagram && git commit -m "Carousel: <slug>" && git push origin main
+# write specs/<slug>.json (see below), then push only the spec:
+git add specs && git commit -m "Carousel: <slug>" && git push origin main
 ```
 
-Needs Playwright (Chromium) and the Inter font, both installed in the cloud environment.
+The **Render carousels** GitHub Action (`.github/workflows/render-carousels.yml`) runs on every push to `main` that adds or changes a spec. It renders `instagram/<slug>/slide-1.png ...`, checks each slide is 1080 x 1440, and commits the images back to `main` as `github-actions[bot]`. Wait for that run to finish green, and for the images to appear at the raw URLs, before using them in Planable. If a slide doesn't fit, the run fails with `slide N: content does not fit...`: shorten that slide's text and push the spec again.
+
+To re-render by hand: Actions > Render carousels > Run workflow, with a slug or `all`. Changing the template (`carousel/`) does not re-render existing carousels automatically, so images already scheduled in Planable stay as they are.
+
+Local rendering (`node carousel/render.mjs specs/<slug>.json`) still works if Playwright (Chromium) and the Inter font are installed, but scheduled Claude runs aren't allowed to execute repo code, so they push specs and let the Action render.
 
 ## Format
 
