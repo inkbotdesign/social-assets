@@ -22,7 +22,7 @@ Local rendering (`node carousel/render.mjs specs/<slug>.json`) still works if Pl
 ## Format
 
 - 1080 x 1440 px (3:4). All content sits inside the central 1080 x 1080 square (180 px clear top and bottom, 84 px sides). The renderer measures every slide, shrinks the type down to 72% if needed, and fails if the content still doesn't fit.
-- Brand: Inter 800 headings with -0.04em tracking; blue #0042C7, ink #0A0A0A, slate #334155, paper #F8F9FA; blueprint grid; sentence-case labels; ID mark and "Inkbot Design" in the footer, plus "n / total".
+- Brand: Inter 800 headings with -0.04em tracking; blue #0042C7, ink #0A0A0A, slate #334155, paper #F8F9FA; blueprint grid; sentence-case labels; ID mark and "Inkbot Design" in the footer, plus "n / total" (the cover adds a small → swipe cue).
 - Slide 1 is the cover: dark by default, or brand blue with `"cover": "blue"`. The last slide is the single blue band (call to action). The slides between are light.
 
 ## Spec

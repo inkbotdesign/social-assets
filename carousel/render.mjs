@@ -60,7 +60,7 @@ function slideHTML(s, i, n) {
     default: throw new Error(`slide ${i + 1}: unknown type ${s.type}`);
   }
   return `<section class="s ${zone} ${mid}" id="s${i + 1}">${kicker}${body}
-  <div class="foot"><div class="brand"><img src="${mark}">Inkbot Design</div><div>${spec.pagination === false ? '' : `${i + 1} / ${n}`}</div></div></section>`;
+  <div class="foot"><div class="brand"><img src="${mark}">Inkbot Design</div><div>${spec.pagination === false ? '' : `${i + 1} / ${n}${i === 0 ? ' <span class="swipe">→</span>' : ''}`}</div></div></section>`;
 }
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${spec.slides.map((s, i) => slideHTML(s, i, spec.slides.length)).join('\n')}</body></html>`;

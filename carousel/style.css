@@ -46,3 +46,5 @@ li::before{content:counter(c);font-weight:800;color:var(--blue)}
 li span{display:block;font-size:calc(25px*var(--k));font-weight:400;color:var(--slate);margin-top:6px;letter-spacing:0}
 blockquote{font-size:calc(68px*var(--k));line-height:1.08;font-weight:800;letter-spacing:-.035em;color:var(--text);border-left:8px solid var(--blue);padding-left:44px}
 .url{font-size:calc(34px*var(--k));font-weight:700;color:#fff;margin-top:calc(44px*var(--k));padding:22px 36px;border:2px solid rgba(255,255,255,.5);border-radius:999px;display:inline-block}
+/* Swipe cue on the cover's page count */
+.swipe{color:var(--acc);margin-left:6px}
