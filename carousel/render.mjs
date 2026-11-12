@@ -4,7 +4,7 @@
 // Renders 1080x1440 PNGs (slide-1.png ...) with all content kept inside the
 // central 1080x1080 square (y 180-1260, x 84-996). Type shrinks automatically
 // if a slide would overflow; the run fails if it still can't fit.
-// Spec: { "slug": "...", "slides": [ {type, ...}, ... ] }  (see README.md)
+// Spec: { "slug": "...", "cover": "dark"|"blue", "slides": [ {type, ...}, ... ] }  (see README.md)
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,8 +30,12 @@ const rich = (s = '') => esc(s)
 
 const CSS = fs.readFileSync(path.join(here, 'style.css'), 'utf8');
 
+// Cover background: spec.cover "dark" (default) or "blue". The autopilot alternates them.
+const COVER = spec.cover ?? 'dark';
+if (!['dark', 'blue'].includes(COVER)) { console.error(`cover must be "dark" or "blue", not "${COVER}"`); process.exit(2); }
+
 function slideHTML(s, i, n) {
-  const zone = s.type === 'cover' ? 'dark' : s.type === 'cta' ? 'blue' : '';
+  const zone = s.type === 'cover' ? (COVER === 'blue' ? 'blue cover-blue' : 'dark') : s.type === 'cta' ? 'blue' : '';
   const mid = zone ? '' : 'mid';
   const mark = zone ? MARK_W : MARK_B;
   const kicker = s.kicker ? `<div class="kicker">${rich(s.kicker)}</div>` : '';

@@ -23,12 +23,12 @@ Local rendering (`node carousel/render.mjs specs/<slug>.json`) still works if Pl
 
 - 1080 x 1440 px (3:4). All content sits inside the central 1080 x 1080 square (180 px clear top and bottom, 84 px sides). The renderer measures every slide, shrinks the type down to 72% if needed, and fails if the content still doesn't fit.
 - Brand: Inter 800 headings with -0.04em tracking; blue #0042C7, ink #0A0A0A, slate #334155, paper #F8F9FA; blueprint grid; sentence-case labels; ID mark and "Inkbot Design" in the footer, plus "n / total".
-- Slide 1 is dark (cover). The last slide is the single blue band (call to action). The slides between are light.
+- Slide 1 is the cover: dark by default, or brand blue with `"cover": "blue"`. The last slide is the single blue band (call to action). The slides between are light.
 
 ## Spec
 
 ```json
-{ "slug": "post-slug", "url": "https://inkbotdesign.com/post-slug/", "slides": [
+{ "slug": "post-slug", "url": "https://inkbotdesign.com/post-slug/", "cover": "dark", "slides": [
   {"type": "cover",   "kicker": "...", "title": "...", "lede": "..."},
   {"type": "point",   "kicker": "...", "title": "...", "text": "..."},
   {"type": "compare", "kicker": "...", "title": "...", "cards": [{"label": "...", "text": "..."}, {"label": "...", "text": "..."}]},
@@ -39,6 +39,8 @@ Local rendering (`node carousel/render.mjs specs/<slug>.json`) still works if Pl
   {"type": "cta",     "kicker": "The full guide", "title": "...", "lede": "... Read the full guide via the link in our bio.", "url": "inkbotdesign.com/links"}
 ]}
 ```
+
+`cover` sets slide 1's background: `"dark"` (default, black) or `"blue"` (brand blue, with highlighted words in pale blue). The autopilot alternates them by publish order so the profile grid and feed get some variation.
 
 `[words]` in a title turns them blue; `**words**` in a note makes them bold. Straight quotes and apostrophes become typographic automatically.
 

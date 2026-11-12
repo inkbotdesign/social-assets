@@ -12,6 +12,9 @@ body{background:#ccc;font-family:"Inter",sans-serif;font-feature-settings:"ss01"
 .dark{background:var(--ink);color:#A3ACBB;--acc:#7AA7FF;--text:#F3F6FB;--muted:#A3ACBB;--line:rgba(255,255,255,.14)}
 .blue{background:var(--blue);color:#DBE6FF;--acc:#fff;--text:#fff;--muted:#C4D4FB;--line:rgba(255,255,255,.25)}
 .blue::before{display:none}
+/* Blue cover: white title, pale-blue highlight, faint white grid like the dark cover */
+.cover-blue{--acc:#A8C5FF;--muted:#C4D4FB}
+.blue.cover-blue::before{display:block;--maj:rgba(255,255,255,.11);--min:rgba(255,255,255,.045)}
 .mid .kicker{margin-top:auto}
 .kicker{font-size:calc(30px*var(--k));font-weight:600;color:var(--acc);letter-spacing:-.005em;margin-bottom:calc(32px*var(--k))}
 h1{font-size:calc(108px*var(--k));line-height:.98;font-weight:800;letter-spacing:-.04em;color:var(--text)}
