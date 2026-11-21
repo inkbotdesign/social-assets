@@ -1,0 +1,27 @@
+/* Inkbot Design reel template: 1080x1920. Text stays inside the safe zone
+   (y 300-1460, x 84-930), clear of Instagram's top bar, caption and side buttons. */
+:root{--blue:#0042C7;--ink:#0A0A0A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;font-family:"Inter",sans-serif;font-feature-settings:"ss01","cv11"}
+.frame{--k:1;width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--ink);color:#A3ACBB;--acc:#7AA7FF;--text:#F3F6FB}
+.frame.blue{background:var(--blue);color:#DBE6FF;--acc:#A8C5FF;--text:#fff}
+.grid{position:absolute;inset:0;--maj:color-mix(in oklab,var(--acc) 13%,transparent);--min:color-mix(in oklab,var(--acc) 5%,transparent);
+  background-image:linear-gradient(to right,var(--maj) 1px,transparent 1px),linear-gradient(to bottom,var(--maj) 1px,transparent 1px),linear-gradient(to right,var(--min) 1px,transparent 1px),linear-gradient(to bottom,var(--min) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,30px 30px,30px 30px;-webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 30%,transparent 80%)}
+.blue .grid{--maj:rgba(255,255,255,.11);--min:rgba(255,255,255,.045)}
+.top{position:absolute;left:84px;right:150px;top:190px;display:flex;flex-direction:column;gap:26px}
+.brand{display:flex;align-items:center;gap:16px;color:var(--text);font-weight:800;letter-spacing:-.03em;font-size:30px}
+.brand img{height:32px}
+.segs{display:flex;gap:10px}
+.seg{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.18);overflow:hidden}
+.seg i{display:block;height:100%;width:0;background:var(--acc)}
+.stage{position:absolute;left:84px;right:150px;top:300px;bottom:460px}
+.layer{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center}
+.kicker{font-size:calc(38px*var(--k));font-weight:600;color:var(--acc);letter-spacing:-.005em;margin-bottom:calc(36px*var(--k))}
+.txt{font-size:calc(112px*var(--k));line-height:1;font-weight:800;letter-spacing:-.045em;color:var(--text);transform-origin:left center}
+.txt.hook{font-size:calc(124px*var(--k))}
+.w{display:inline-block}
+.acc{color:var(--acc)}
+.acc .p{color:var(--text)}
+.lede{font-size:calc(40px*var(--k));line-height:1.3;margin-top:calc(40px*var(--k));letter-spacing:-.01em}
+.url{align-self:flex-start;font-size:calc(40px*var(--k));font-weight:700;color:var(--text);margin-top:calc(48px*var(--k));padding:24px 40px;border:2px solid rgba(255,255,255,.5);border-radius:999px}

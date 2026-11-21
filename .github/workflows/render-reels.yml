@@ -1,0 +1,105 @@
+name: Render reels
+
+# Renders faceless Instagram reels (text on screen + original background audio)
+# from reel-specs/<slug>.json and commits reels/<slug>/reel.mp4 and cover.jpg.
+# Runs on pushes to main that add or change a reel spec, or by hand
+# (Actions > Render reels > Run workflow) for one slug or all specs.
+# The autopilot only pushes reel specs; this workflow is the only thing that runs the renderer.
+
+on:
+  push:
+    branches: [main]
+    paths: ['reel-specs/*.json']
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Reel spec slug to render, or "all"'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-reels-main
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Work out which reel specs to render
+        id: specs
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          SLUG: ${{ inputs.slug }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            if [ "$SLUG" = "all" ]; then files=$(ls reel-specs/*.json)
+            else files="reel-specs/${SLUG}.json"; [ -f "$files" ] || { echo "::error::No spec at $files"; exit 1; }; fi
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            files=$(git diff-tree --no-commit-id --name-only --diff-filter=AM -r HEAD -- 'reel-specs/*.json')
+          else
+            files=$(git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- 'reel-specs/*.json')
+          fi
+          echo "Reel specs to render:"; echo "$files"
+          { echo 'files<<EOF'; echo "$files"; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.specs.outputs.files != ''
+        with:
+          node-version: 22
+
+      - name: Install Inter, ffmpeg, Playwright and Chromium
+        if: steps.specs.outputs.files != ''
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q fonts-inter ffmpeg
+          npm install --no-save --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Render
+        if: steps.specs.outputs.files != ''
+        env:
+          FILES: ${{ steps.specs.outputs.files }}
+        run: |
+          fail=0
+          for f in $FILES; do
+            echo "::group::$f"
+            node reel/render.mjs "$f" || { echo "::error file=$f::Render failed for $f"; fail=1; }
+            echo "::endgroup::"
+          done
+          exit $fail
+
+      - name: Check reels
+        if: steps.specs.outputs.files != ''
+        env:
+          FILES: ${{ steps.specs.outputs.files }}
+        run: |
+          for f in $FILES; do
+            slug=$(node -p "require('./$f').slug")
+            p="reels/$slug/reel.mp4"
+            dims=$(ffprobe -v error -select_streams v -show_entries stream=width,height -of csv=p=0 "$p")
+            [ "$dims" = "1080,1920" ] || { echo "::error::$p is $dims, expected 1080,1920"; exit 1; }
+            ffprobe -v error -select_streams a -show_entries stream=codec_name -of csv=p=0 "$p" | grep -q aac || { echo "::error::$p has no audio"; exit 1; }
+            echo "$slug: 1080x1920 with audio, $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$p")s"
+          done
+
+      - name: Commit rendered reels
+        if: steps.specs.outputs.files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reels
+          if git diff --cached --quiet; then echo "No reel changes."; exit 0; fi
+          git commit -m "Render reels for ${GITHUB_SHA::7}"
+          for attempt in 1 2 3; do
+            git pull --rebase -q origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push rendered reels"; exit 1

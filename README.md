@@ -45,3 +45,29 @@ Local rendering (`node carousel/render.mjs specs/<slug>.json`) still works if Pl
 `[words]` in a title turns them blue; `**words**` in a note makes them bold. Straight quotes and apostrophes become typographic automatically.
 
 Limits: kicker 5 words; cover title 9 words; titles 12 words; lede/note/text 35 words; chips 3-6 items of up to 4 words; list up to 6 items (title 7 words, text 9 words); card text 12 words. Seven slides: cover, five content slides using at least three different types, call to action. Facts from the article only.
+
+## Reels (faceless: text on screen + background audio)
+
+Added 21 Nov 2026 after the Instagram audit. Reels reach non-followers far better than carousels, so the autopilot now makes faceless reels as well as carousels.
+
+```bash
+# write reel-specs/<slug>.json, then push only the spec:
+git add reel-specs && git commit -m "Reel: <slug>" && git push origin main
+```
+
+The **Render reels** Action (`.github/workflows/render-reels.yml`) renders `reels/<slug>/reel.mp4` (1080 x 1920, 30 fps, H.264 + AAC) and `reels/<slug>/cover.jpg`, checks them and commits them to `main`. Raw URL for Planable: `https://raw.githubusercontent.com/inkbotdesign/social-assets/main/reels/<slug>/reel.mp4`.
+
+```json
+{ "slug": "reel-slug", "theme": "dark", "beats": [
+  {"text": "The hook: one specific claim, [accent words] in brackets"},
+  {"kicker": "Optional label", "text": "One idea per beat"},
+  {"text": "..."}
+], "end": {"title": "Short closing line", "lede": "Optional one line", "url": "inkbotdesign.com/links"} }
+```
+
+- `theme`: `"dark"` or `"blue"` (alternate them like carousel covers).
+- 4-8 beats, max 12 words each (kicker max 5), end title max 9 words. Total 12-35 seconds (holds are automatic: about 2-3s a beat, the end card 3.2s; set `"hold"` on a beat to override).
+- Beat 1 is the hook and is fully on screen from the first frame, so it reads as a still in the feed and the grid. No greeting, no logo sting, no "In this video".
+- Text stays inside the reel safe zone (y 300-1460, x 84-930), clear of Instagram's top bar, caption and side buttons; type shrinks to 76% if needed, otherwise the run fails with "text does not fit".
+- The background track is original and synthesised during the render (`reel/audio.mjs`), so there is nothing to license. Trending Instagram audio can't be added through Planable; add it in the Instagram app if you want it.
+- UK English, sentence case, no em dashes, facts from the post or the locked brand facts only.
