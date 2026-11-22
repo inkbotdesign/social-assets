@@ -124,11 +124,27 @@ for (;;) {
 }
 if (k < 1) console.log(`type scaled to ${Math.round(k * 100)}% so every beat fits`);
 
-// ---- audio (original, generated here, so no licensing issues) -------------
+// ---- audio (original tracks made for Inkbot, so no licensing issues) -------
+// reel/tracks/*.m4a are synthesised by reel/tracks/make_tracks.py. A reel uses spec.audio
+// if set (a track name), otherwise a track picked from its slug, so consecutive reels vary.
+// If no tracks exist, fall back to the simple generated pad in audio.mjs.
 const wav = path.join(outDir, 'audio.wav');
-const a = spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', `aevalsrc='${audioExpr()}':s=44100:d=${total}`,
-  '-af', `lowpass=f=7000,afade=t=in:d=0.25,afade=t=out:st=${Math.max(0, total - 1.2)}:d=1.2,loudnorm=I=-16:TP=-1.5:LRA=7`, '-ar', '44100', wav], { stdio: 'inherit' });
+const trackDir = path.join(here, 'tracks');
+const tracks = fs.existsSync(trackDir) ? fs.readdirSync(trackDir).filter((f) => f.endsWith('.m4a')).sort() : [];
+const tail = `afade=t=in:d=0.04,afade=t=out:st=${Math.max(0, total - 1.2)}:d=1.2,loudnorm=I=-15:TP=-1.5:LRA=7`;
+let a, trackName = 'generated pad';
+if (tracks.length) {
+  let pick = spec.audio ? tracks.find((f) => f === `${spec.audio}.m4a`) : null;
+  if (spec.audio && !pick) fail(`audio "${spec.audio}" not found in reel/tracks (have: ${tracks.map((f) => f.replace('.m4a', '')).join(', ')})`);
+  if (!pick) { let h = 0; for (const ch of spec.slug) h = (h * 31 + ch.charCodeAt(0)) >>> 0; pick = tracks[h % tracks.length]; }
+  trackName = pick.replace('.m4a', '');
+  a = spawnSync('ffmpeg', ['-y', '-v', 'error', '-i', path.join(trackDir, pick), '-t', String(total), '-af', tail, '-ar', '44100', '-ac', '2', wav], { stdio: 'inherit' });
+} else {
+  a = spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', `aevalsrc='${audioExpr()}':s=44100:d=${total}`,
+    '-af', `lowpass=f=7000,${tail}`, '-ar', '44100', wav], { stdio: 'inherit' });
+}
 if (a.status !== 0) fail('audio generation failed', 5);
+console.log(`audio: ${trackName}`);
 
 // ---- video ----------------------------------------------------------------
 const mp4 = path.join(outDir, 'reel.mp4');
