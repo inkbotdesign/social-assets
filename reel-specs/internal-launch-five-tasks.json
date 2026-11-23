@@ -1,0 +1,10 @@
+{"slug": "internal-launch-five-tasks", "theme": "dark", "source": "internal-brand-launch",
+ "test": {"pair": "internal-launch-old-deck", "version": "B", "hook_style": "number"},
+ "beats": [
+  {"text": "[Five tasks] show whether your rebrand actually launched."},
+  {"kicker": "Task one", "text": "Find the approved template without asking anyone."},
+  {"kicker": "Tasks two and three", "text": "Open it in PowerPoint. Replace the example with real work."},
+  {"kicker": "Tasks four and five", "text": "Save it correctly. Know who fixes it when it breaks."},
+  {"kicker": "If someone fails", "text": "Fix the [template] before you blame the training."}
+ ],
+ "end": {"title": "Test the system before you announce it.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}

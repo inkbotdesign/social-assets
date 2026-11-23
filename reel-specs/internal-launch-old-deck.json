@@ -1,0 +1,11 @@
+{"slug": "internal-launch-old-deck", "theme": "blue", "source": "internal-brand-launch",
+ "test": {"pair": "internal-launch-old-deck", "version": "A", "hook_style": "scenario"},
+ "beats": [
+  {"text": "Launch day was six weeks ago. [The old deck] just went out."},
+  {"kicker": "The usual diagnosis", "text": "Partners are ignoring the new brand."},
+  {"kicker": "The real problem", "text": "The template wasn't ready, or nobody could find it."},
+  {"text": "Announce the brand only when people can [actually use it]."},
+  {"text": "Then ask one partner to build a real proposal alone."},
+  {"text": "Where they get stuck, fix the system, not the person."}
+ ],
+ "end": {"title": "Make the new brand work on Monday.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}
