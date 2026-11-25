@@ -1,0 +1,11 @@
+{"slug": "positioning-wrong-brief", "theme": "blue", "source": "brand-positioning-vs-brand-strategy",
+ "test": {"pair": "positioning-wrong-brief", "version": "A", "hook_style": "mistake"},
+ "beats": [
+  {"text": "You're briefing a rebrand when the problem is [one decision]."},
+  {"kicker": "Positioning", "text": "Why a specific buyer should choose you over the alternatives."},
+  {"kicker": "Strategy", "text": "How that choice shows up in messaging, identity and delivery."},
+  {"kicker": "Execution", "text": "The choice is sound, but the website hides it."},
+  {"text": "Clients get it, the website doesn't? [Fix the wording]."},
+  {"text": "Partners disagree on the audience? No copywriter can settle that."}
+ ],
+ "end": {"title": "Diagnose before you commission.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}

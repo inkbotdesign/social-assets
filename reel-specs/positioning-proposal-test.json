@@ -1,0 +1,11 @@
+{"slug": "positioning-proposal-test", "theme": "blue", "source": "brand-positioning-vs-brand-strategy",
+ "test": {"pair": "positioning-wrong-brief", "version": "B", "hook_style": "question"},
+ "beats": [
+  {"text": "Could a buyer find [the reason to choose you] in your proposal?"},
+  {"text": "Open your last proposal. Then open a rival's."},
+  {"kicker": "Look for three things", "text": "Why choose you. What proves it. What you promise to deliver."},
+  {"text": "Blank on the reason? That's a [positioning] question."},
+  {"text": "Reason clear, but delivery breaks it? Fix delivery first."},
+  {"text": "Neither one proves you need a rebrand."}
+ ],
+ "end": {"title": "Find the gap before you brief anyone.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}

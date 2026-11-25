@@ -1,0 +1,10 @@
+{"slug": "naming-cant-prove-expertise", "theme": "dark", "source": "what-is-brand-naming",
+ "test": {"pair": "naming-cant-prove-expertise", "version": "A", "hook_style": "contrarian"},
+ "beats": [
+  {"text": "A new name can't explain [what your firm does]."},
+  {"text": "A name can suggest an idea. It can't prove expertise."},
+  {"kicker": "Proof does that", "text": "Credentials, case studies and a clear descriptor."},
+  {"text": "So test the cheaper fix first: [change the descriptor]."},
+  {"text": "Rename only if buyers still misread the firm."}
+ ],
+ "end": {"title": "Fix the explanation before the name.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}

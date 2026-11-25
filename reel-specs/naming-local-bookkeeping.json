@@ -1,0 +1,10 @@
+{"slug": "naming-local-bookkeeping", "theme": "dark", "source": "what-is-brand-naming",
+ "test": {"pair": "naming-cant-prove-expertise", "version": "B", "hook_style": "scenario"},
+ "beats": [
+  {"text": "Prospects think you [only do local bookkeeping]. Is the name to blame?"},
+  {"text": "Your name mentions your town and your first service."},
+  {"text": "Now you advise businesses on tax across the UK."},
+  {"kicker": "One change at a time", "text": "Keep the name. Rewrite the descriptor beneath it."},
+  {"text": "Still misread? Then [compare new names] against the same criteria."}
+ ],
+ "end": {"title": "Find what causes the misreading first.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}}
