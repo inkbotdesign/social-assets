@@ -1,0 +1,33 @@
+{
+ "slug": "buyandbuild-founder-boardroom",
+ "theme": "blue",
+ "source": "buy-and-build-brand-strategy",
+ "test": {
+  "pair": "buyandbuild-founder-boardroom",
+  "version": "A",
+  "hook_style": "scenario"
+ },
+ "beats": [
+  {
+   "text": "Deal four closes. The founder wants [their name kept]. Now what?"
+  },
+  {
+   "text": "Without rules, the loudest voice sets naming policy."
+  },
+  {
+   "kicker": "Ask clients instead",
+   "text": "What name do they use when recommending the firm?"
+  },
+  {
+   "text": "Founder attachment is not evidence of [client value]."
+  },
+  {
+   "text": "Then keep, endorse or retire, with a named approver."
+  }
+ ],
+ "end": {
+  "title": "Write the naming rules before the next deal.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

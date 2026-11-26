@@ -1,0 +1,33 @@
+{
+ "slug": "fractional-md-owns-brand",
+ "theme": "blue",
+ "source": "fractional-brand-manager",
+ "test": {
+  "pair": "fractional-two-and-a-half-days",
+  "version": "B",
+  "hook_style": "contrarian"
+ },
+ "beats": [
+  {
+   "text": "Your brand already has an owner. [It just wasn't chosen.]"
+  },
+  {
+   "text": "Partners own pitches. BD writes proposals. IT controls templates."
+  },
+  {
+   "text": "Nobody owns the brand, so it lands on the MD."
+  },
+  {
+   "kicker": "The fix",
+   "text": "Make the owner deliberate, for only the days needed."
+  },
+  {
+   "text": "Month one: a signed register of [who decides what]."
+  }
+ ],
+ "end": {
+  "title": "Name the owner before you add headcount.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

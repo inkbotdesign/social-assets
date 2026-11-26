@@ -1,0 +1,33 @@
+{
+ "slug": "buyandbuild-which-names-stay",
+ "theme": "dark",
+ "source": "buy-and-build-brand-strategy",
+ "test": {
+  "pair": "buyandbuild-founder-boardroom",
+  "version": "B",
+  "hook_style": "question"
+ },
+ "beats": [
+  {
+   "text": "Which of your acquired names [would clients actually miss]?"
+  },
+  {
+   "text": "If nobody has asked them, you're guessing."
+  },
+  {
+   "text": "Ask referrers whether they'd recognise the parent."
+  },
+  {
+   "kicker": "Three outcomes",
+   "text": "Keep a name buyers seek. Endorse it. Or retire it."
+  },
+  {
+   "text": "Record every exception, its evidence and its owner."
+  }
+ ],
+ "end": {
+  "title": "Same evidence test. Different answers per deal.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "slug": "inhouse-free-time-mistake",
+ "theme": "dark",
+ "source": "in-house-or-agency-rebrand",
+ "test": {
+  "pair": "inhouse-reject-positioning",
+  "version": "B",
+  "hook_style": "mistake"
+ },
+ "beats": [
+  {
+   "text": "Treating your marketing team's time as [free] skews the rebrand budget."
+  },
+  {
+   "kicker": "Hypothetical numbers",
+   "text": "160 internal hours at £50 an hour is £8,000."
+  },
+  {
+   "text": "An agency quote of £12,000 still needs internal hours."
+  },
+  {
+   "text": "Compare the same scope on both sides."
+  },
+  {
+   "text": "Then check what work those hours [displace]."
+  }
+ ],
+ "end": {
+  "title": "Price the hours before you pick a route.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

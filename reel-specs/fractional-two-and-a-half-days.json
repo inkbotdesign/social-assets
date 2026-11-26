@@ -1,0 +1,36 @@
+{
+ "slug": "fractional-two-and-a-half-days",
+ "theme": "dark",
+ "source": "fractional-brand-manager",
+ "test": {
+  "pair": "fractional-two-and-a-half-days",
+  "version": "A",
+  "hook_style": "number"
+ },
+ "beats": [
+  {
+   "text": "Under [2.5 days] of brand work a week? Don't hire full-time."
+  },
+  {
+   "kicker": "Illustrative figures",
+   "text": "£90,000 a year all-in against £700 a day."
+  },
+  {
+   "text": "Break-even sits at about 129 days a year."
+  },
+  {
+   "text": "Below that, a salary buys [idle capacity]."
+  },
+  {
+   "text": "Above it, the full-time hire costs less per day."
+  },
+  {
+   "text": "Never measured it? Run a fractional quarter and count."
+  }
+ ],
+ "end": {
+  "title": "Count the days before you buy headcount.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

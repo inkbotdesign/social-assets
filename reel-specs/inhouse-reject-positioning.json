@@ -1,0 +1,36 @@
+{
+ "slug": "inhouse-reject-positioning",
+ "theme": "blue",
+ "source": "in-house-or-agency-rebrand",
+ "test": {
+  "pair": "inhouse-reject-positioning",
+  "version": "A",
+  "hook_style": "question"
+ },
+ "beats": [
+  {
+   "text": "What finding would make your partners [reject their preferred answer]?"
+  },
+  {
+   "text": "If the answer is nothing, the rebrand is just confirmation."
+  },
+  {
+   "kicker": "Inside or outside",
+   "text": "An agency doesn't fix that on its own."
+  },
+  {
+   "text": "It needs the same access and permission to disagree."
+  },
+  {
+   "text": "So name who can [approve the recommendation] first."
+  },
+  {
+   "text": "Then choose in-house, agency or hybrid."
+  }
+ ],
+ "end": {
+  "title": "Objectivity is a working condition, not an address.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}
