@@ -1,0 +1,36 @@
+{
+ "slug": "niche-capability-not-position",
+ "theme": "blue",
+ "source": "niche-marketing",
+ "test": {
+  "pair": "niche-invoices-not-research",
+  "version": "B",
+  "hook_style": "mistake"
+ },
+ "beats": [
+  {
+   "text": "Mistake: assuming buyers can see [the specialism you already have]."
+  },
+  {
+   "text": "Capability is what your firm can do."
+  },
+  {
+   "text": "Position is what a buyer believes [before any call]."
+  },
+  {
+   "kicker": "The test",
+   "text": "Ask a stranger in your target sector to read your site."
+  },
+  {
+   "text": "Ten minutes. Then one sentence: who do you serve?"
+  },
+  {
+   "text": "A vague answer means [capability without position]."
+  }
+ ],
+ "end": {
+  "title": "Make the niche visible, not just real.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

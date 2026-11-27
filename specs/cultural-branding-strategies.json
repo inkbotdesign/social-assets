@@ -1,0 +1,74 @@
+{
+ "slug": "cultural-branding-strategies",
+ "url": "https://inkbotdesign.com/cultural-branding-strategies/",
+ "cover": "blue",
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "Cultural branding",
+   "title": "Adapt [the proof], not the paint.",
+   "lede": "Colours rarely lose a mandate in a new market. Unrecognised evidence does."
+  },
+  {
+   "type": "point",
+   "kicker": "A governance job",
+   "title": "Most firms treat it as [a design job]",
+   "text": "Deciding what stays consistent across markets is a question of authority. A firm that cannot say what is fixed has no basis for refusing a local request."
+  },
+  {
+   "type": "stat",
+   "kicker": "Why familiarity wins",
+   "title": "Buyers protect [their own standing]",
+   "stat": "72%",
+   "text": "of professional services buyers had chosen a familiar supplier over a better-value alternative to protect their internal career standing.",
+   "source": "VML, The Future Buyer: Professional Services, 2026"
+  },
+  {
+   "type": "list",
+   "kicker": "Fixed, Flexed, Free",
+   "title": "Three tiers, [three approvers]",
+   "items": [
+    {
+     "title": "Fixed",
+     "text": "Name, positioning, core identity. Managing partner or board."
+    },
+    {
+     "title": "Flexed",
+     "text": "Case studies, credentials, tone. The brand owner."
+    },
+    {
+     "title": "Free",
+     "text": "Local channels, referrals, events. Local office lead."
+    }
+   ]
+  },
+  {
+   "type": "compare",
+   "kicker": "Where it backfires",
+   "title": "Change the proof, [never the claim]",
+   "cards": [
+    {
+     "label": "Adapt",
+     "text": "Local case studies and credentials buyers recognise."
+    },
+    {
+     "label": "Dilute",
+     "text": "A different positioning claim in every market."
+    }
+   ]
+  },
+  {
+   "type": "quote",
+   "kicker": "Try this today",
+   "quote": "Gaps in that list are your real exposure.",
+   "text": "List every brand element on one page. Mark each Fixed, Flexed or Free, and write one approver beside each."
+  },
+  {
+   "type": "cta",
+   "kicker": "The full guide",
+   "title": "Decide the fixed core before you cross a border.",
+   "lede": "A governance model for firms entering new markets, opening offices or acquiring. Read the full guide via the link in our bio.",
+   "url": "inkbotdesign.com/links"
+  }
+ ]
+}

@@ -1,0 +1,79 @@
+{
+ "slug": "niche-marketing",
+ "url": "https://inkbotdesign.com/niche-marketing/",
+ "cover": "dark",
+ "slides": [
+  {
+   "type": "cover",
+   "kicker": "Niche marketing",
+   "title": "Your best niche is [already in your invoices].",
+   "lede": "Most established firms already hold the evidence. What fails is that nobody outside the firm can see it."
+  },
+  {
+   "type": "point",
+   "kicker": "Start with evidence",
+   "title": "Mine [three years] of engagements first",
+   "text": "Sort the work by sector, service line and client type. Rank each segment on fee income, realisation, repeat or referred work, and how much the team enjoys it."
+  },
+  {
+   "type": "list",
+   "kicker": "Three conditions",
+   "title": "What a niche needs [before any marketing]",
+   "items": [
+    {
+     "title": "Capability",
+     "text": "People and capacity to serve it well."
+    },
+    {
+     "title": "Concentration",
+     "text": "A meaningful share of fees or referrals."
+    },
+    {
+     "title": "Willingness to refuse",
+     "text": "Partners decline work that conflicts with it."
+    }
+   ]
+  },
+  {
+   "type": "compare",
+   "kicker": "Capability is not position",
+   "title": "Being the specialist and [looking like one]",
+   "cards": [
+    {
+     "label": "Capability",
+     "text": "What the firm can actually do."
+    },
+    {
+     "label": "Position",
+     "text": "What a buyer believes before any conversation."
+    }
+   ]
+  },
+  {
+   "type": "chips",
+   "kicker": "The ten-minute test",
+   "title": "Ask a stranger [in your target segment]",
+   "chips": [
+    "Ten minutes",
+    "On your website",
+    "Who do you serve?",
+    "One sentence"
+   ],
+   "note": "If the answer is vague, you have **capability without position**.",
+   "strong": true
+  },
+  {
+   "type": "point",
+   "kicker": "In the partner meeting",
+   "title": "Partners agree on [evidence, not principle]",
+   "text": "Ask three questions in order: which segment earns the highest realisation, which refers new work, and which can we serve better than any competitor?"
+  },
+  {
+   "type": "cta",
+   "kicker": "The full guide",
+   "title": "Choose the niche your evidence supports.",
+   "lede": "Six steps to choose a niche, get partners to agree and make the market see it. Read the full guide via the link in our bio.",
+   "url": "inkbotdesign.com/links"
+  }
+ ]
+}

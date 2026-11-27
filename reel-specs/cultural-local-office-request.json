@@ -1,0 +1,38 @@
+{
+ "slug": "cultural-local-office-request",
+ "theme": "dark",
+ "source": "cultural-branding-strategies",
+ "test": {
+  "pair": "cultural-72-percent-familiar",
+  "version": "B",
+  "hook_style": "scenario"
+ },
+ "beats": [
+  {
+   "text": "Your new overseas office wants [a different tagline]. Who decides?"
+  },
+  {
+   "text": "If nobody can say, the loudest local voice wins."
+  },
+  {
+   "text": "Adaptation is not the risk. [Undefined limits] are."
+  },
+  {
+   "kicker": "Fixed",
+   "text": "Name and positioning: the managing partner or board."
+  },
+  {
+   "kicker": "Flexed",
+   "text": "Case studies and tone: the brand owner."
+  },
+  {
+   "kicker": "Free",
+   "text": "Local events and channels: the office lead."
+  }
+ ],
+ "end": {
+  "title": "Write one approver beside every brand element.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

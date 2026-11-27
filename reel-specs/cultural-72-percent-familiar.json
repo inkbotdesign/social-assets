@@ -1,0 +1,37 @@
+{
+ "slug": "cultural-72-percent-familiar",
+ "theme": "blue",
+ "source": "cultural-branding-strategies",
+ "test": {
+  "pair": "cultural-72-percent-familiar",
+  "version": "A",
+  "hook_style": "number"
+ },
+ "beats": [
+  {
+   "text": "[72%] of professional services buyers chose familiar over better value."
+  },
+  {
+   "text": "They were protecting their own standing inside the firm."
+  },
+  {
+   "text": "In a new market, unfamiliar proof [costs more than colour]."
+  },
+  {
+   "kicker": "Adapt the proof",
+   "text": "Local case studies, credentials and references buyers recognise."
+  },
+  {
+   "text": "Keep the name and positioning fixed."
+  },
+  {
+   "kicker": "Source",
+   "text": "VML, The Future Buyer: Professional Services, 2026"
+  }
+ ],
+ "end": {
+  "title": "Decide what stays fixed before you expand.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "slug": "niche-invoices-not-research",
+ "theme": "dark",
+ "source": "niche-marketing",
+ "test": {
+  "pair": "niche-invoices-not-research",
+  "version": "A",
+  "hook_style": "contrarian"
+ },
+ "beats": [
+  {
+   "text": "Your next niche isn't in a market report. [It's in your invoices.]"
+  },
+  {
+   "text": "Keyword tools show what strangers search for."
+  },
+  {
+   "kicker": "Your invoices",
+   "text": "They show what clients actually pay for."
+  },
+  {
+   "text": "Pull three years of work. Sort by sector and service."
+  },
+  {
+   "text": "Rank on fee income, realisation and [referred work]."
+  },
+  {
+   "text": "Then agree what the firm will decline."
+  }
+ ],
+ "end": {
+  "title": "Choose the niche your evidence supports.",
+  "lede": "Full guide: link in bio",
+  "url": "inkbotdesign.com/links"
+ }
+}
