@@ -1,0 +1,15 @@
+{
+ "slug": "equity-identity-wont-defend-fees",
+ "theme": "dark",
+ "source": "brand-equity-examples",
+ "test": {"pair": "equity-identity-wont-defend-fees", "version": "A", "hook_style": "contrarian"},
+ "beats": [
+  {"text": "A new identity won't [defend your fees] on its own."},
+  {"text": "Fees get challenged when a buyer can't justify choosing you."},
+  {"kicker": "Ask first", "text": "What can your sponsor show [a sceptical board]?"},
+  {"text": "Relevant project proof. A credible team. [Not just one partner.]"},
+  {"text": "Famous brands prove mechanisms, [not results you can borrow]."},
+  {"text": "Find that doubt [before you brief a designer]."}
+ ],
+ "end": {"title": "Diagnose the doubt, then rebrand.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}
+}

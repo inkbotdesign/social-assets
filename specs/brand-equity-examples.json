@@ -1,0 +1,14 @@
+{
+ "slug": "brand-equity-examples",
+ "url": "https://inkbotdesign.com/brand-equity-examples/",
+ "cover": "dark",
+ "slides": [
+  {"type": "cover", "kicker": "Brand equity", "title": "Recognition won't [defend your fees]. Evidence will.", "lede": "Seven B2B examples, from IBM to Dropbox, show what actually helps a buyer justify your fee or recommend you."},
+  {"type": "point", "kicker": "Fee defence", "title": "IBM sells [a choice nobody gets blamed for]", "text": "The transferable question for a smaller firm: what can your client's sponsor show a sceptical board? Relevant project evidence and a credible delivery team."},
+  {"type": "compare", "kicker": "Key-person risk", "title": "Accenture's lesson: capability that [belongs to the firm]", "cards": [{"label": "Partner-led", "text": "Clients buy the person presenting the pitch."}, {"label": "Firm-led", "text": "Proposals show team expertise, process and continuity."}]},
+  {"type": "chips", "kicker": "Referral flow", "title": "What makes a client [recommend you]?", "chips": ["Easy to explain", "Useful to share", "A reason to meet", "A reward"], "note": "IQVIA, Autodesk, Salesforce and Dropbox. Only the last is an incentive, so **count rewarded referrals separately**.", "strong": true},
+  {"type": "list", "kicker": "Diagnose first", "title": "Match the symptom [to the lesson]", "items": [{"title": "Fees challenged", "text": "IBM and Aon: test fee justification."}, {"title": "Clients buy one partner", "text": "Accenture: show institutional capability."}, {"title": "Vague introductions", "text": "IQVIA: clarify whom the firm helps."}, {"title": "Busy events, few leads", "text": "Salesforce: improve relevance before scale."}]},
+  {"type": "point", "kicker": "Before the rebrand", "title": "Read your latest proposals [before any rebrand]", "text": "Note the buyer doubt each one reveals. Unclear wording may need an internal fix. Failing delivery needs operations first. A rebrand fits when positioning, evidence and identity contradict each other."},
+  {"type": "cta", "kicker": "The full guide", "title": "Fix the doubt, then the identity.", "lede": "Seven B2B brand equity examples and a diagnostic table for your firm. Read the full guide via the link in our bio.", "url": "inkbotdesign.com/links"}
+ ]
+}

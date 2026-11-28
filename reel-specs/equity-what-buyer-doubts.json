@@ -1,0 +1,15 @@
+{
+ "slug": "equity-what-buyer-doubts",
+ "theme": "blue",
+ "source": "brand-equity-examples",
+ "test": {"pair": "equity-identity-wont-defend-fees", "version": "B", "hook_style": "question"},
+ "beats": [
+  {"text": "When a fee gets challenged, [what is the buyer doubting]?"},
+  {"text": "Your expertise? The team behind the partner? [The risk?]"},
+  {"kicker": "Check the losses", "text": "Compare buyer objections with [scope-matched losses]."},
+  {"text": "Recognition alone [does not create preference]."},
+  {"text": "Unclear wording? An internal fix may be enough."},
+  {"text": "Name the doubt, then decide if [a rebrand] fixes it."}
+ ],
+ "end": {"title": "Know the doubt before the brief.", "lede": "Full guide: link in bio", "url": "inkbotdesign.com/links"}
+}
